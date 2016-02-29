@@ -4,10 +4,9 @@ import (
 	"errors"
 	"fmt"
 	"github.com/codegangsta/cli"
-	"github.com/paulvollmer/fzp/go"
+	"github.com/fritzing/fzp/src/go"
 	"io/ioutil"
 	"os"
-	"path/filepath"
 	"strconv"
 )
 
@@ -63,10 +62,10 @@ func main() {
 					Name:  "no-check-description, nd",
 					Usage: "disable <description> check",
 				},
-				// cli.BoolFlag{
-				// 	Name:  "no-check-author, na",
-				// 	Usage: "disable <author> check",
-				// },
+				cli.BoolFlag{
+					Name:  "no-check-author, na",
+					Usage: "disable <author> check",
+				},
 				// cli.BoolFlag{
 				// 	Name:  "no-check-date, nD",
 				// 	Usage: "disable <date> check",
@@ -83,9 +82,9 @@ func main() {
 				// 	Name:  "no-check-taxonomy, nD",
 				// 	Usage: "disable <taxonomy> check",
 				// },
-				 cli.BoolFlag{
-				 	Name:  "no-check-family, nD",
-				 	Usage: "disable <family> check",
+				cli.BoolFlag{
+					Name:  "no-check-family, nD",
+					Usage: "disable <family> check",
 				},
 				// cli.BoolFlag{
 				// 	Name:  "no-check-variant, nD",
@@ -192,7 +191,7 @@ func validateFolder(c *cli.Context, src string) []error {
 		filename := v.Name()
 		// fmt.Printf("file %v: %v\n", k, filename)
 		// check if file is a fzp file
-		if isExtFzp(filename) {
+		if fzp.IsFileFzp(filename) {
 			if err := validateFile(c, src+"/"+filename); err != nil {
 				errList = append(errList, err)
 				fmt.Println(err, "\n")
@@ -234,7 +233,7 @@ func checkData(c *cli.Context, fzpData fzp.Fzp) int {
 			checkErrorCounter++
 		}
 	}
-	
+
 	/*if !c.Bool("no-check-family") {
 		if err := fzpData.CheckFamily(); err != nil {
 			fmt.Println("=>", err)
@@ -242,8 +241,20 @@ func checkData(c *cli.Context, fzpData fzp.Fzp) int {
 		}
 	}*/
 
-	// Check Description ?
-	// Check Author ?
+	if !c.Bool("no-check-description") {
+		if err := fzpData.CheckDescription(); err != nil {
+			fmt.Println("=>", err)
+			checkErrorCounter++
+		}
+	}
+
+	if !c.Bool("no-check-author") {
+		if err := fzpData.CheckAuthor(); err != nil {
+			fmt.Println("=>", err)
+			checkErrorCounter++
+		}
+	}
+
 	// Check Date ?
 	// Check URL ?
 	// Check Label ?
@@ -265,15 +276,14 @@ func checkData(c *cli.Context, fzpData fzp.Fzp) int {
 		}
 	}
 
-	return checkErrorCounter
-}
-
-func isExtFzp(src string) bool {
-	if filepath.Ext(src) == ".fzp" {
-		return true
-	} else {
-		return false
+	if !c.Bool("no-check-buses") {
+		if err := fzpData.CheckBuses(); err != nil {
+			fmt.Println("=>", err)
+			checkErrorCounter++
+		}
 	}
+
+	return checkErrorCounter
 }
 
 func Log(format string, a ...interface{}) {
