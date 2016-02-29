@@ -36,7 +36,7 @@ func commandCreateAction(c *cli.Context) {
 
 	// process
 	// create
-	tmpFzp := fzp.Fzp{}
+	tmpFzp := fzp.FZP{}
 	tmpFzp.Title = tmpTitle
 	fmt.Println("fzp", tmpFzp)
 

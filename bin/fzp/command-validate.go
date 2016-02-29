@@ -65,10 +65,10 @@ var commandValidateFlags = []cli.Flag{
 	// 	Name:  "no-check-taxonomy, nD",
 	// 	Usage: "disable <taxonomy> check",
 	// },
-	cli.BoolFlag{
-		Name:  "no-check-family, nD",
-		Usage: "disable <family> check",
-	},
+	// cli.BoolFlag{
+	// 	Name:  "no-check-family, nD",
+	// 	Usage: "disable <family> check",
+	// },
 	// cli.BoolFlag{
 	// 	Name:  "no-check-variant, nD",
 	// 	Usage: "disable <variant> check",
@@ -174,7 +174,7 @@ func validateFolder(c *cli.Context, src string) []error {
 	return errList
 }
 
-func checkData(c *cli.Context, fzpData fzp.Fzp) int {
+func checkData(c *cli.Context, fzpData fzp.FZP) int {
 	checkErrorCounter := 0
 
 	/*if !c.Bool("no-check-fritzingversion") {
