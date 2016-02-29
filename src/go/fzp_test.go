@@ -36,7 +36,7 @@ func Test_ReadFzp_Failed(t *testing.T) {
 
 func Test_ReadFzp_CheckTags(t *testing.T) {
 	// fake data
-	fzpData := Fzp{}
+	fzpData := FZP{}
 	fzpData.Tags = append(fzpData.Tags, "")
 	// was an error returned?
 	err, _ := fzpData.CheckTags()
