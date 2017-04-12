@@ -1,0 +1,119 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {},
+  "id": "http://example.com/example.json",
+  "type": "object",
+  "properties": {
+    "author": {
+      "id": "/properties/author",
+      "type": "string",
+      "description": "the author of the fzp",
+      "example": "fritzing"
+    },
+    "busses": {
+      "id": "/properties/busses",
+      "type": "string",
+      "description": "...",
+      "example": "..."
+    },
+    "connectors": {
+      "id": "/properties/connectors",
+      "type": "string",
+      "description": "...",
+      "example": "..."
+    },
+    "date": {
+      "id": "/properties/date",
+      "type": "string",
+      "description": "...",
+      "example": "..."
+    },
+    "description": {
+      "id": "/properties/description",
+      "type": "string",
+      "description": "...",
+      "example": "..."
+    },
+    "family": {
+      "id": "/properties/family",
+      "type": "string",
+      "description": "...",
+      "example": "..."
+    },
+    "label": {
+      "id": "/properties/label",
+      "type": "string",
+      "description": "...",
+      "example": "..."
+    },
+    "language": {
+      "id": "/properties/language",
+      "type": "string",
+      "description": "...",
+      "example": "..."
+    },
+    "properties": {
+      "id": "/properties/properties",
+      "type": "array",
+      "description": "...",
+      "items": {
+        "id": "/properties/properties/items",
+        "type": "object",
+        "description": "...",
+        "properties": {
+          "name": {
+            "id": "/properties/properties/items/properties/name",
+            "type": "string",
+            "description": "...",
+            "example": "..."
+          }
+        },
+      }
+    },
+    "tags": {
+      "id": "/properties/tags",
+      "type": "array",
+      "items": {
+        "id": "/properties/tags/items",
+        "type": "string",
+        "description": "...",
+        "example": "..."
+      },
+    },
+    "taxonomy": {
+      "id": "/properties/taxonomy",
+      "type": "string",
+      "description": "...",
+      "example": "..."
+    },
+    "title": {
+      "id": "/properties/title",
+      "type": "string",
+      "description": "...",
+      "example": "fzp-item"
+    },
+    "url": {
+      "id": "/properties/url",
+      "type": "string",
+      "description": "...",
+      "example": "https://fritzing.org"
+    },
+    "variant": {
+      "id": "/properties/variant",
+      "type": "string",
+      "description": "...",
+      "example": "..."
+    },
+    "version": {
+      "id": "/properties/version",
+      "type": "string",
+      "description": "...",
+      "example": "0.0.0"
+    },
+    "views": {
+      "id": "/properties/views",
+      "type": "object",
+      "description": "...",
+    }
+  }
+}
